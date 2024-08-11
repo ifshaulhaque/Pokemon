@@ -12,9 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 
 @Composable
-fun PokemonGridScreen(viewModel: PokemonViewModel = hiltViewModel()) {
+fun PokemonGridScreen(
+    navController: NavController,
+    viewModel: PokemonViewModel = hiltViewModel()
+) {
     val pokemonList = viewModel.pokemonList
 
     val gridCells = when (LocalConfiguration.current.orientation) {
@@ -31,7 +35,7 @@ fun PokemonGridScreen(viewModel: PokemonViewModel = hiltViewModel()) {
             .padding(8.dp)
     ) {
         itemsIndexed(pokemonList.value) { index, pokemon ->
-            PokemonListItemCard(pokemon)
+            PokemonListItemCard(pokemon,navController)
         }
     }
 }

@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ifsha.pokemon.details.PokemonDetails
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -13,6 +14,8 @@ class PokemonViewModel @Inject constructor(private val repository: PokemonReposi
     ViewModel() {
 
     val pokemonList = mutableStateOf<List<PokemonResult>>(emptyList())
+    val pokemonDetails = mutableStateOf<PokemonDetails?>(null)
+
 
     init {
         fetchPokemonList()
@@ -25,6 +28,17 @@ class PokemonViewModel @Inject constructor(private val repository: PokemonReposi
                 val list = ArrayList<PokemonResult>()
                 list.addAll(response.results)
                 pokemonList.value = list
+            } catch (e: Exception) {
+                Log.e("API ERROR",e.message.toString())
+            }
+        }
+    }
+
+    fun fetchDetails(id: Int) {
+        viewModelScope.launch {
+            try {
+                val response = repository.getPokemonDetails(id)
+                pokemonDetails.value = response
             } catch (e: Exception) {
                 Log.e("API ERROR",e.message.toString())
             }
