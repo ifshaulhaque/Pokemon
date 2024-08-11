@@ -1,15 +1,16 @@
 package com.ifsha.pokemon.details
 
+import com.google.gson.annotations.SerializedName
+
 data class PokemonDetails(
-    val name: String,
-    val baseExperience: Int,
-    val height: Int,
-    val weight: Int,
-    val abilities: List<Ability>,
-    val sprites: Sprites,
-    val cries: Cries
+    @SerializedName("abilities"       ) var abilities      : ArrayList<Abilities> = arrayListOf(),
+    @SerializedName("base_experience" ) var baseExperience : Int?                 = null,
+    @SerializedName("cries"           ) var cries          : Cries?               = Cries(),
+    @SerializedName("height"          ) var height         : Int?                 = null,
+    @SerializedName("id"              ) var id             : Int?                 = null,
+    @SerializedName("name"            ) var name           : String?              = null,
+    @SerializedName("sprites"         ) var sprites        : Sprites?             = Sprites(),
+    @SerializedName("weight"          ) var weight         : Int?                 = null,
+    @SerializedName("moves"           ) var moves          : ArrayList<Moves>     = arrayListOf()
 )
 
-data class Ability(val name: String?)
-data class Sprites(val frontDefault: String, val frontShiny: String)
-data class Cries(val latest: String, val legacy: String)

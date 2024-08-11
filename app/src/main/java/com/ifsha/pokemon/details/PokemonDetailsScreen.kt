@@ -38,7 +38,7 @@ fun PokemonDetailsScreen(
         ) {
             // Pokémon Image
             GlideImage(
-                model = pokemon.sprites.frontDefault,
+                model = pokemon.sprites?.frontDefault,
                 contentDescription = "${pokemon.name} image",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
@@ -47,12 +47,14 @@ fun PokemonDetailsScreen(
             )
 
             // Pokémon Name
-            Text(
-                text = pokemon.name.capitalize(),
-                style = MaterialTheme.typography.headlineMedium,
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(8.dp)
-            )
+            pokemon.name?.let { it1 ->
+                Text(
+                    text = it1.capitalize(),
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(8.dp)
+                )
+            }
 
             // Pokémon Base Experience, Height, and Weight
             Text(
@@ -61,12 +63,12 @@ fun PokemonDetailsScreen(
                 modifier = Modifier.padding(4.dp)
             )
             Text(
-                text = "Height: ${pokemon.height / 10.0} m",
+                text = "Height: ${pokemon.height?.div(10.0)} m",
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(4.dp)
             )
             Text(
-                text = "Weight: ${pokemon.weight / 10.0} kg",
+                text = "Weight: ${pokemon.weight?.div(10.0)} kg",
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(4.dp)
             )
@@ -78,7 +80,7 @@ fun PokemonDetailsScreen(
                 modifier = Modifier.padding(top = 8.dp)
             )
             pokemon.abilities.forEach { ability ->
-                ability.name?.let {
+                ability.ability?.name?.let {
                     Text(
                         text = it.capitalize(),
                         style = MaterialTheme.typography.bodyMedium,
@@ -88,8 +90,12 @@ fun PokemonDetailsScreen(
             }
 
             // Play Pokémon Cry Button
-            PlayCryButton(url = pokemon.cries.latest)
-            PlayCryButton(url = pokemon.cries.legacy)
+            pokemon.cries?.latest?.let {
+                PlayCryButton(url = it)
+            }
+            pokemon.cries?.legacy?.let {
+                PlayCryButton(url = it)
+            }
 
         }
     }
