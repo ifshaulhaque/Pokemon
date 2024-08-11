@@ -1,4 +1,4 @@
-package com.ifsha.pokemon
+package com.ifsha.pokemon.list
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement

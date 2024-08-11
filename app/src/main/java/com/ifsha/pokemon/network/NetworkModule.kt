@@ -1,4 +1,4 @@
-package com.ifsha.pokemon
+package com.ifsha.pokemon.network
 
 import dagger.Module
 import dagger.Provides

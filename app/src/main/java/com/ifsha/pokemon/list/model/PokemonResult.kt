@@ -1,4 +1,4 @@
-package com.ifsha.pokemon
+package com.ifsha.pokemon.list.model
 
 data class PokemonResult(
     val name: String,

@@ -1,10 +1,12 @@
-package com.ifsha.pokemon
+package com.ifsha.pokemon.list
 
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ifsha.pokemon.details.PokemonDetails
+import com.ifsha.pokemon.details.model.PokemonDetails
+import com.ifsha.pokemon.list.model.PokemonResult
+import com.ifsha.pokemon.network.PokemonRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

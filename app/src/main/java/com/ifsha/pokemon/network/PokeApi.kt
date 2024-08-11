@@ -1,9 +1,9 @@
-package com.ifsha.pokemon
+package com.ifsha.pokemon.network
 
-import com.ifsha.pokemon.details.PokemonDetails
+import com.ifsha.pokemon.list.model.PokemonResponse
+import com.ifsha.pokemon.details.model.PokemonDetails
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface PokeApi {
     @GET("pokemon")

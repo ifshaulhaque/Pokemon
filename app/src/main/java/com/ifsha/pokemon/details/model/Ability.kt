@@ -1,9 +1,9 @@
-package com.ifsha.pokemon.details
+package com.ifsha.pokemon.details.model
 
 import com.google.gson.annotations.SerializedName
 
 
-data class Move (
+data class Ability (
 
   @SerializedName("name" ) var name : String? = null
 

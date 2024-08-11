@@ -1,4 +1,4 @@
-package com.ifsha.pokemon.details
+package com.ifsha.pokemon.details.model
 
 import com.google.gson.annotations.SerializedName
 

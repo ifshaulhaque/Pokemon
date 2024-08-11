@@ -1,4 +1,4 @@
-package com.ifsha.pokemon
+package com.ifsha.pokemon.list
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -15,6 +15,7 @@ import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.ifsha.pokemon.list.model.PokemonResult
 
 @Composable
 fun PokemonListItemCard(pokemon: PokemonResult, navController: NavController) {
